@@ -57,6 +57,7 @@ SELECT name, continent, code, surface_area,
 FROM countries;
 
 ------------------------INNER CHALLANGES------------------------
+
 SELECT name, continent, code, surface_area,
     CASE WHEN surface_area > 2000000
             THEN 'large'
@@ -91,8 +92,10 @@ FROM countries_plus as c
 -- Order the table    
 ORDER BY geosize_group;
 
+===============================================================================
 PART 2
 ------------------------LEFT & RIGHT JOIN------------------------
+
 -- Select fields
 SELECT region, AVG(gdp_percapita) AS avg_gdp
 -- From countries (alias as c)
@@ -186,6 +189,47 @@ ORDER BY life_exp
 -- Limit to 5 records
 LIMIT 5
 
------------------------- ------------------------
+===============================================================================
+PART 3
+------------------------UNION------------------------
 
+-- Select fields from 2010 table
+SELECT *
+  -- From 2010 table
+  FROM economies2010
+    -- Set theory clause
+    UNION
+-- Select fields from 2015 table
+SELECT *
+  -- From 2015 table
+  FROM economies2015
+-- Order by code and year
+ORDER BY code, year;
 
+-- Select field
+SELECT country_code
+  -- From cities
+  FROM cities 
+    -- Set theory clause
+    UNION
+-- Select field
+SELECT code
+  -- From currencies
+  FROM currencies
+-- Order by country_code
+ORDER BY country_code;
+
+------------------------UNION ALL------------------------
+
+-- Select fields
+SELECT code, year
+  -- From economies
+  FROM economies
+    -- Set theory clause
+    UNION ALL
+-- Select fields
+SELECT country_code, year
+  -- From populations
+  FROM populations
+-- Order by code, year
+ORDER BY code, year;
