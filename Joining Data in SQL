@@ -1,4 +1,5 @@
-PART 1
+=======================================================================================================================================================================
+                                                                    PART 1 Introduction to joins
 ------------------------INNER JOIN------------------------
 
 -- Select fields
@@ -92,8 +93,8 @@ FROM countries_plus as c
 -- Order the table    
 ORDER BY geosize_group;
 
-===============================================================================
-PART 2
+=======================================================================================================================================================================
+                                                                    PART 2 Outer joins and cross joins
 ------------------------LEFT & RIGHT JOIN------------------------
 
 -- Select fields
@@ -189,8 +190,8 @@ ORDER BY life_exp
 -- Limit to 5 records
 LIMIT 5
 
-===============================================================================
-PART 3
+=======================================================================================================================================================================
+                                                                    PART 3 Set theory clauses
 ------------------------UNION------------------------
 
 -- Select fields from 2010 table
@@ -233,3 +234,31 @@ SELECT country_code, year
   FROM populations
 -- Order by code, year
 ORDER BY code, year;
+
+------------------------INTERSECT------------------------
+
+-- Select fields
+SELECT code, year
+  -- From economies
+  FROM economies 
+    -- Set theory clause
+    INTERSECT
+-- Select fields
+SELECT country_code, year
+  -- From populations
+  FROM populations
+-- Order by code and year
+ORDER BY code, year;
+
+-- Select fields
+SELECT name, code
+  -- From countries
+  from countries
+    -- Set theory clause
+    INTERSECT
+-- Select fields
+SELECT name, country_code
+  -- From cities
+  FROM cities;
+
+------------------------  ------------------------
