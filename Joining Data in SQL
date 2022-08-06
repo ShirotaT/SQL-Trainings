@@ -277,6 +277,8 @@ SELECT name
 ORDER BY capital asc;
 
 ------------------------SEMI-JOINS & ANTI-JOINS------------------------
+
+Semi-joins
 -- Query from step 1:
 /*
 SELECT code
@@ -304,6 +306,7 @@ where code IN
 -- Order by name
 ORDER BY name;
 
+Anti-joins
 -- Select statement
 SELECT count(name)
   -- From countries
